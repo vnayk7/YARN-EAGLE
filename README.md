@@ -4,5 +4,5 @@
 <p align="center">
   <b>yarn-eagle</b>
 </p>
-Monitor and restart Spark streaming Yarn apps like a yarn-eagle :metal:
+Monitor and restart Spark streaming Yarn apps automatically ..be a yarn-eagle :eagle:
 
