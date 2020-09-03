@@ -3,6 +3,7 @@
 </p>
 <p align="center">
   <b>yarn-eagle</b>
+  Monitor and restart Spark streaming yarn apps automatically ..be a yarn-eagle :eagle:
 </p>
-Monitor and restart Spark streaming Yarn apps automatically ..be a yarn-eagle :eagle:
+
 
