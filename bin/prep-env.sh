@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ ! -d ~/miniconda ]; then
+if [ ! -d ~/yarn-eagle/miniconda ]; then
 
   echo "installing miniconda "
   # Set your corporate proxy in case
@@ -9,9 +9,9 @@ if [ ! -d ~/miniconda ]; then
   # Get miniconda
   wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
   # run install
-  bash ~/Miniconda3-latest-Linux-x86_64.sh -b -p ~/miniconda
+  bash ~/yarn-eagle/Miniconda3-latest-Linux-x86_64.sh -b -p ~/yarn-eagle/miniconda
   # create venv
-  ~/miniconda/bin/conda create -n venv --copy -y -q python=3.8.3 pandas numpy openpyxl flask croniter  pytz dash
+  ~/yarn-eagle/miniconda/bin/conda create -n venv --copy -y -q python=3.8.3 pandas numpy openpyxl flask croniter  pytz dash
 else
   echo " miniconda exists .. continue with next step"
 fi
