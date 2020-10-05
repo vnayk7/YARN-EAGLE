@@ -1,0 +1,26 @@
+# Compiled class file
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.log
+*.html
+*.tar.gz
+*.rar
+target*
+classes*
+generated*
+
+# idea files 
+*.idea
+
+# iml files
+*.iml
+
+# ds
+*.DS_STORE
+/dependency-reduced-pom.xml
