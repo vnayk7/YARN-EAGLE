@@ -4,9 +4,8 @@
 mkdir -p ~/yarn-eagle/output
 #chmod -R 777 ~/yarn-eagle/output
 
-
+cd ~/yarn-eagle/miniconda
 source ~/yarn-eagle/miniconda/etc/profile.d/conda.sh
-
 conda activate venv
 pip list
 python --version
