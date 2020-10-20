@@ -57,11 +57,11 @@ prod_string = 'oser'
 if dev_string in os.uname().nodename:
     print("Working with Dev cluster")
     rm_url_path = rm_url_path_dev
-    cluster = 'DEV17'
+    cluster = 'DEV'
 elif prod_string in os.uname().nodename:
     print("Working with Prod Cluster")
     rm_url_path = rm_url_path_prod
-    cluster = 'PROD17'
+    cluster = 'PROD'
 
 ''' Logging : Gets or creates a logger '''
 logger = logging.getLogger(__name__)
