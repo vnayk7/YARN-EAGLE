@@ -117,6 +117,9 @@ for id in app_ids:
     df2 = pd.DataFrame([json.loads(proc_out)])
     df3 = json_normalize(df2['app'])
     data_out.append(df3)
+if len(data_out) == 0:
+   print("No data .. looks like no apps running on cluster that we are tracking ")
+   sys.exit()
 data_out = pd.concat(data_out)
 data_out = data_out.drop(
     ['preemptedResourceMB', 'preemptedResourceVCores', 'numNonAMContainerPreempted',
