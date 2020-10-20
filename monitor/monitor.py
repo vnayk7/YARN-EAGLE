@@ -6,6 +6,8 @@ import sys
 import subprocess
 import pandas as pd
 import logging
+import os
+from pathlib import Path
 
 pd.options.mode.chained_assignment = None
 pd.options.display.float_format = '{:.0f}'.format
@@ -295,3 +297,16 @@ if not df_strm_app_torestart.empty:
     logger.info("Looks like we might have to restart few apps ")
     logger.info(str(("List of Apps to be restarted are : ", df_strm_app_torestart)))
     sendEmail(mail_from, mail_to, mail_cc, mail_msg + " " + cluster)
+    data_path=Path(data_path)
+    for i, g in strm_app_torestart_gpd.groupby('app_user'):  # iterate through unique values in app_user
+        file_name = f'{i}.config'  # create the empty content string
+        file_path = data_path / "action" / file_name
+        logger.info(str(("creating & writing the file  : ",file_path)))
+        with open(file_path, 'w') as fp:  # open the file
+            #fp.write(str(g.apps.replace(regex='(d)', value='apps=')))  # write content to file
+            h=g.apps  # write content to file
+            fp.write(str(h))
+            #fp.write(str(g.apps).replace('\n.*', ''))  # write content to file
+            logger.info(str(("Writing the config file  : ",file_name)))
+            fp.close()
+            os.chmod(file_path, 0o777)
