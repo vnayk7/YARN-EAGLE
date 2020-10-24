@@ -4,7 +4,7 @@
   Monitor and restart Spark streaming yarn apps automatically ..be a yarn-eagle :eagle:
 </p>
 
-# yarn-eagle
+# YARN-EAGLE
 **Monitor and restart Spark streaming yarn apps automatically**
 
 ## Demo
