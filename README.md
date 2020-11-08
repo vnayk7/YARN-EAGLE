@@ -1,4 +1,4 @@
-  <img src="https://github.com/lluminov/Yeagle/blob/master/yarn-eagle.jpg" width="256" title="yarn-eagle">
+  <img src="https://github.com/lluminov/Yeagle/blob/master/yarn-eagle.jpg" width="256" title="YARN-EAGLE">
 </p>
 <p align="center">
   Monitor and restart Spark streaming yarn apps automatically ..be a YARN-EAGLE :eagle:
@@ -9,7 +9,7 @@
 
 ## Demo
 ![](YARN-EAGLE_demo.gif)
-
+ <img src="https://github.com/vnayk7/YARN-EAGLE/blob/master/YARN-EAGLE_demo.png" title="YARN-EAGLE_demo">
 ## Motivation
 When you have lots of yarn applications running on your hadoop cluster , it gets overwhelming to track all batch and streaming appications and
 you start wishing if you had an app which could track and also help restart your Spark streaming applications .
