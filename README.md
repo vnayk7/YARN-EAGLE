@@ -8,7 +8,7 @@
 **Monitor and restart Spark streaming yarn apps automatically**
 
 ## Demo
-
+![](YARN-EAGLE_demo.gif)
 
 ## Motivation
 When you have lots of yarn applications running on your hadoop cluster , it gets overwhelming to track all batch and streaming appications and
