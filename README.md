@@ -13,14 +13,14 @@
 ## Motivation
 When you have lots of yarn applications running on your hadoop cluster , it gets overwhelming to track all batch and streaming appications and
 you start wishing if you had an app which could track and also help restart your Spark streaming applications .
-yarn-eagle helps you to :
+YARN-EAGLE helps you to :
 1. Track yarn applications ( Spark batch , Spark Streaming , MapReduce, Hive queries )
 2. Easily onboard new applications with just a config file
 3. Email notifications ( only when something is wrong ) with a intuitive tabular data to analyze
 4. Restart Spark streaminig applications autonomously
 
 ## Prerequisites
-Before we make yarn-eagle work for us let's see what is needed <br>
+Before we make YARN-EAGLE work for us let's see what is needed <br>
 A user on Edge node of your hadoop cluster which :
 
    1. Can access the yarn api/cli commands. How do you test that ? <br>
@@ -45,7 +45,7 @@ A user on Edge node of your hadoop cluster which :
        `cd ~`
    2. Clone the repository in the directory of your choice on the edge node with below command. Follow this document if you are a beginner [cloning a repo](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
 
-      `git clone "https://github.com/vnayk7/yarn-eagle.git"`
+      `git clone "https://github.com/vnayk7/YARN-EAGLE.git"`
 
    3. change the directory
       `cd yarn-eagle`
@@ -72,17 +72,17 @@ A user on Edge node of your hadoop cluster which :
                &nbsp;&nbsp;&nbsp;&nbsp;a. rm_url_path_dev = This is the Resource Manager URL of your Hadoop cluster <br> &nbsp;&nbsp;&nbsp;&nbsp; ( input here your development cluster RM URL  ) <br>
                &nbsp;&nbsp;&nbsp;&nbsp;b. rm_url_path_prod = This is the Resource Manager URL of your Hadoop cluster <br> &nbsp;&nbsp;&nbsp;&nbsp; ( input here your production cluster RM URL  ) <br>
                &nbsp;&nbsp;&nbsp;&nbsp;c. apps_home = The location on your Edge node where all Spark application code is deployed  <br>
-               &nbsp;&nbsp;&nbsp;&nbsp;d. app_path = The location on your Edge node where yarn-eagle is downloaded , for example if you downloaded yarn eagle to your home directory it would be /u/users/youruserid/yarn-eagle <br>
-               &nbsp;&nbsp;&nbsp;&nbsp;e. data_path = The location on your Edge node where yarn-eagle writes data  ,for example if you downloaded yarn eagle to your home directory it would be /u/users/youruserid/yarn-eagle<br>
-               &nbsp;&nbsp;&nbsp;&nbsp;f. html_path = The location on your Edge node where yarn-eagle writes the html file prefixed with output ,for example if you downloaded yarn eagle to your home directory it would be /u/users/youruserid/yarn-eagle/output/index.html <br>
-               &nbsp;&nbsp;&nbsp;&nbsp;g. logfile_path = The location on your Edge node where yarn-eagle writes the log file prefixed with output , for example if you downloaded yarn eagle to your home directory it would be /u/users/youruserid/yarn-eagle/output/logfile.log <br>
+               &nbsp;&nbsp;&nbsp;&nbsp;d. app_path = The location on your Edge node where YARN-EAGLE is downloaded , for example if you downloaded yarn eagle to your home directory it would be /u/users/youruserid/yarn-eagle <br>
+               &nbsp;&nbsp;&nbsp;&nbsp;e. data_path = The location on your Edge node where YARN-EAGLE writes data  ,for example if you downloaded yarn eagle to your home directory it would be /u/users/youruserid/yarn-eagle<br>
+               &nbsp;&nbsp;&nbsp;&nbsp;f. html_path = The location on your Edge node where YARN-EAGLE writes the html file prefixed with output ,for example if you downloaded yarn eagle to your home directory it would be /u/users/youruserid/yarn-eagle/output/index.html <br>
+               &nbsp;&nbsp;&nbsp;&nbsp;g. logfile_path = The location on your Edge node where YARN-EAGLE writes the log file prefixed with output , for example if you downloaded yarn eagle to your home directory it would be /u/users/youruserid/yarn-eagle/output/logfile.log <br>
 
         iii. Section [mail] <br>
                &nbsp;&nbsp;This section of the config file takes in the parameters for email generation <br>
                  &nbsp;&nbsp;&nbsp;&nbsp;a. from = Default from user on your domain which sends out email , update the value of yourdomain.com <br>
                  &nbsp;&nbsp;&nbsp;&nbsp;b. to = your corporate email <br>
                  &nbsp;&nbsp;&nbsp;&nbsp;c. cc = corporate email of cc to be sent <br>
-                 &nbsp;&nbsp;&nbsp;&nbsp;d. msg = Mail subject , default value Yarn-Eagle status check <br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;d. msg = Mail subject , default value YARN-EAGLE status check <br>
 
         iv. Section [misc]    <br>
               &nbsp;&nbsp;This section of config file takes in misclaneous values like  <br>
@@ -91,8 +91,8 @@ A user on Edge node of your hadoop cluster which :
          `sh monitor/run_monitor_command.sh` <br>
        The monitoring script produces the below two outputs  <br>
          &nbsp;&nbsp;a. An HTML email - <br>
-           &nbsp;&nbsp;<b>HTML Email trigger logic </b>: If you have any of the yarn applications which are in the status FINISHED FAILED ( i.e State = FINISHED and FinalStatus = FAILED) , &nbsp;&nbsp;yarn-eagle sends out email notification to the email address mentioned in cluster.config file <br>
-           Below is the sample output of the email that is sent out when yarn-eagle detects that any Streaming app has FINISHED FAILED
+           &nbsp;&nbsp;<b>HTML Email trigger logic </b>: If you have any of the yarn applications which are in the status FINISHED FAILED ( i.e State = FINISHED and FinalStatus = FAILED) , &nbsp;&nbsp;YARN-EAGLE sends out email notification to the email address mentioned in cluster.config file <br>
+           Below is the sample output of the email that is sent out when YARN-EAGLE detects that any Streaming app has FINISHED FAILED
 
          &nbsp;&nbsp;b. Output Config files that are read by the  action script - <br>
          &nbsp;&nbsp;&nbsp;The output config file has the list of application names that need to be restarted as they were detected in the status FINISHED FAILED ( i.e State = FINISHED and FinalStatus = FAILED)
@@ -100,29 +100,7 @@ A user on Edge node of your hadoop cluster which :
 
 ## Quick Installation steps - Autonomous Action
 
-   As mentioned yarn-eagle has the ability to autonomously restart the Spark Streaming yarn applications when it detects any of them in the FINISHED FAILED status . <br>
-
-## Prerequisites
-
-
-   The autonomous action requires few mandatory steps before you test it out : <br>
-a). You have sudo or direct access to the user which is running one of the Spark Streaming applications . This also means that you have sudo access to the user on your cluster which runs the spark-submit command for your Spark Streaming applications <br>
-            If you do not have access to this user , you can contact your Hadoop admin to get sudo access or let the admin run this script manually for testing <br>
-b). You have an example Spark streaming Application which has a status FINISHED FAILED , i.e State = FINISHED and FinalStatus = FAILED <br>
-     Once the above prereqs are fulfilled , you can test the autonomous action following instructions as below
-
-Steps to test autonomous action
-
-  1. Log in to the Edge node with one of the user that runs the Sark Streaming applications  <br>
-
-  2. Move to directory where yarn-eagle is installed , for example if you downloaded yarn eagle in your home directory on edge node  <br>
-     `cd ~/yarn-eagle` <br>
-  3. The output config file has the list of application names that need to be restarted as they were detected in the status FINISHED FAILED ( i.e State = FINISHED and FinalStatus = FAILED)
-
-
-## Quick Installation steps - Autonomous Action
-
-   As mentioned yarn-eagle has the ability to autonomously restart the Spark Streaming yarn applications when it detects any of them in the FINISHED FAILED status . <br>
+   As mentioned YARN-EAGLE has the ability to autonomously restart the Spark Streaming yarn applications when it detects any of them in the FINISHED FAILED status . <br>
 
 ## Prerequisites
 
