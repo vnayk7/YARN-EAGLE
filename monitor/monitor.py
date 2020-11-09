@@ -254,7 +254,7 @@ strm_app_torestart_gpd = df_strm_app_torestart.groupby('app_user')['app_name'].a
 ''' creating the html file tp be written as report '''
 html = "Streaming Apps Running are :" + "\n\n\n" + df_strm_app_running.to_html() + "<br><br>" + "Streaming Apps Finished Failed or Killed are :" + "\n\n\n" + df_strm_app_finished.to_html() + "<br><br>" + "Streaming Apps to be Restarted are :" + "\n" + df_strm_app_torestart.to_html() + "<br><br>" + "Batch Apps Running are :" + "\n\n\n" + df_batch_app_running.to_html() + "<br><br>" + "Batch Apps Finished are :" + df_batch_app_finished.to_html()
 
-''' Adding the colored labesl to the html file '''
+''' Adding the colored labels to the html file '''
 text_file_w = open(html_path, "w")
 text_file_w.write(html)
 text_file_w.close()
@@ -272,7 +272,7 @@ tfr = tfr.replace('<td>Batch App KILLED', '<td bgcolor="red"<td>Batch App KILLED
 tfr = tfr.replace('<td>Batch App FAILED', '<td bgcolor="red"<td>Batch App FAILED')
 text_file_r.close()
 text_file_w = open(html_path, "wt")
-''' overrite the input file with the resulting data '''
+''' overwrite the input file with the resulting data '''
 text_file_w.write(tfr)
 ''' close the file '''
 text_file_w.close()
